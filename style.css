@@ -1,0 +1,257 @@
+/*  ---------------------------------------------------  */
+/*  HYPERMEDIA EXAM PROJECT                              */
+/*  Politecnico di Milano - 2016                          */
+/*  Giuliano Cotrufo - Andrea Cavallaro - Dario Messina  */
+/*  ---------------------------------------------------  */
+
+html{
+  margin: 0;
+  top:0;
+  left:0;
+
+}
+body{
+  font-family: 'Muli', sans-serif;
+  font-size: 14px;
+  margin:0px;
+  top:0;
+
+}
+html,body,#page{
+  min-height:100%; 
+  width:100%;
+  height:100%;
+
+}
+h1{
+  font-size: 22px;
+  line-height: 1.2em;
+
+}
+h2{
+  border-bottom: solid #000 1px;
+  text-transform: none;
+  text-decoration: none;
+
+}
+h3{
+  line-height: 0;
+
+}
+a:link{
+ color:#fff;
+  
+}
+a:visited{
+ color:#fff;
+  
+}
+nav {
+  padding: 3px;
+  color: #FFFFFF;
+  text-align: center;
+}
+nav ul{
+  width:  90%;
+  list-style: none;
+  font-size: 16px;
+
+}
+
+nav ul li{
+  display: inline-block;
+  margin-left: 10px;
+}
+
+nav > ul > li > a:link{
+  color: #FFFFFF;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 1px;
+
+}
+nav > ul > li > a:visited{
+  color: #FFFFFF;
+  text-transform: none;
+  text-decoration: none;
+
+}
+nav > ul > li > a:hover{
+  color: #FFFFFF;
+  border-bottom: 3px #FFFFFF solid;
+  text-transform: none;
+  text-decoration: none;
+
+}
+.fitimage {
+    display: block;
+    width:100%;
+    height:auto;
+}
+
+footer{
+  bottom: 0;
+  left:0;
+  background-color:#bcbcbc;
+  color: rgba(0,0,0,0.5);
+  font-size: 12px;
+  padding: 5px;
+  display: block;
+
+}
+footer > p {
+  margin-left: 5px;
+  padding: 3px;
+  border-bottom: 3px solid #acacac;
+
+}
+#main{
+    background-color: #0077CC;
+    color: #fff;
+}
+
+#submain{
+    background-color: #CC0030;
+    display:none;
+
+}
+#head{
+    height: 60px;
+    background-image: url('img/logo7.png');
+    background-repeat: no-repeat;
+    background-size: 120px;
+    background-color: #0B3D86;
+    width: 100%;
+    background-position: right;
+
+
+}
+#page{
+    height: auto;
+
+}
+.boxed-content{
+    float:left; 
+    margin:auto;
+    padding:3px;
+    display: inline-block; 
+    width:400px; 
+    overflow:hidden;
+    margin-left: 10px;
+}
+.device-c{
+  width:200px; 
+  height:auto; 
+  float:left; 
+  margin-left:20px;
+  padding: 20px; 
+  border-radius:20px; 
+  border: 1px #B9B9B9 solid;
+
+}
+.device-c:hover{
+  background-color:#F9F9F9;
+  border-color:none;
+  display: block;
+  cursor:pointer;
+
+
+}
+.device-show{
+  width:40%; 
+  height:auto; 
+  float:left; 
+  margin-left:20px;
+  padding: 20px; 
+
+}
+
+/* #### bootstrap Form CSS #### */
+.bootstrap-frm {
+    margin-left:auto;
+    margin-right:auto;
+
+    max-width: 500px;
+    background: #FFF;
+    padding: 20px 30px 20px 30px;
+    font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #888;
+    text-shadow: 1px 1px 1px #FFF;
+    border:1px solid #DDD;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+.bootstrap-frm h1 {
+    font: 25px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom: 1px solid #DADADA;
+    margin: -10px -30px 30px -30px;
+    color: #888;
+}
+.bootstrap-frm h1>span {
+    display: block;
+    font-size: 11px;
+}
+.bootstrap-frm label {
+    display: block;
+    margin: 0px 0px 5px;
+}
+.bootstrap-frm label>span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+.bootstrap-frm input[type="text"], .bootstrap-frm input[type="email"], .bootstrap-frm textarea, .bootstrap-frm select{
+    border: 1px solid #CCC;
+    color: #888;
+    height: 20px;
+    line-height:15px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 5px 0px 5px 5px;
+    width: 70%;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;    
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.bootstrap-frm select {
+    background: #FFF url('down-arrow.png') no-repeat right;
+    background: #FFF url('down-arrow.png') no-repeat right;
+    appearance:none;
+    -webkit-appearance:none; 
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 70%;
+    height: 35px;
+    line-height:15px;
+}
+.bootstrap-frm textarea{
+    height:100px;
+    padding: 5px 0px 0px 5px;
+    width: 70%;
+}
+.bootstrap-frm .button {
+    background: #FFF;
+    border: 1px solid #CCC;
+    padding: 10px 25px 10px 25px;
+    color: #333;
+    border-radius: 4px;
+}
+.bootstrap-frm .button:hover {
+    color: #333;
+    background-color: #EBEBEB;
+    border-color: #ADADAD;
+}
