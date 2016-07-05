@@ -9,7 +9,7 @@
 </form>
 <?php
 // Connetto il DB
-require('lib/connect_db.php');
+require('../lib/connect_db.php');
 // Preparo la Query per mostrare tutti i device caricati nella tabella del database
 $query = "SELECT * FROM devices ORDER BY id DESC LIMIT 9";
 // Eseguo la query per recuperare le informazioni dal database
