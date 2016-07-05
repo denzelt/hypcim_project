@@ -39,7 +39,7 @@
         <li><a href="index.php?s=home">  HOME   </a></li> 
         <li><a href="index.php?s=device">  DEVICE   </a></li>  
         <li><a href="index.php?s=sl">  SMARTLIFE   </a></li>  
-        <li><a href="index.php?s=assistenza">  ASSISTENZA   </a></li>  
+        <li><a href="index.php?s=assistance">  ASSISTANCE   </a></li>  
         <li><a href="index.php?s=altro">  XXXXXX   </a></li>
         <li><a href="index.php?s=admin">  Admin   </a></li>
         <div style="float:right; font-size:32px;margin-top:-10px;">
@@ -59,7 +59,7 @@
 // prendo il contenuto della variabile GET s
 $show = strip_tags(stripcslashes($_GET['s']));
 // Contiene in nomi dei file in /pages contenuti per l'inclusione
-$whitelist = ['home','device','sl','assistenza', 'admin', 'show'];
+$whitelist = ['home','device','sl','assistance', 'admin', 'show'];
 //rimuoviamo roba strana che possono inserire malintenzionati
   if(in_array($show, $whitelist) or $_GET == null) {
        if(!isset($_GET['s'])){
