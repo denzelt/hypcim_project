@@ -1,12 +1,13 @@
 <?php
 // Connetto il DB
-require('lib/connect_db.php');
+require('../lib/connect_db.php');
 $maxprice = abs($_GET['max_price']);
 // Preparo la Query per mostrare tutti i device caricati nella tabella del database
-$query = "SELECT * FROM devices WHERE prezzo < $maxprice";
+$query = "SELECT * FROM devices WHERE prezzo < $maxprice ORDER BY prezzo DESC";
 // Eseguo la query per recuperare le informazioni dal database
 $result = mysql_query($query, $mysql) or die("Errore, Impossibile recuperare le informazioni dal database");
 // Metto fuori i risultati dall'array
+if($result != null){
 while($row = mysql_fetch_array($result)){
 $i++;
  ?>
@@ -22,8 +23,13 @@ $i++;
 </div>
 
 <?php
-if($i%3 == 0){
- echo"<div style='clear:left; padding:3px;'></div>";
+	if($i%3 == 0){
+ 	echo"<div style='clear:left; padding:3px;'></div>";
+		}
 	}
+}else{
+
+ echo "<center>No device match this criteria.</center>";
+
 }
 ?>

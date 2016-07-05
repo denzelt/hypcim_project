@@ -1,7 +1,12 @@
 ﻿<div style="margin:auto; text-aling:center; width:850px;">
 <h1>Device</h1>
 <p>Welcome in the Device page, here you can navigate throught our catalog. You can view all devices or you can choose a category. You can also check the Promotion page where there are always good deals!</p>
+<form name="filters" method="get" action="index.php?s=device">
 
+  <label><b>Max Price:</b> <span id="slidernumber"></span>
+    <input type="range" name="price" min="50" max="1500" step="10" id="price" style="margin-top:5px;">
+  </label>
+</form>
 <?php
 // Connetto il DB
 require('lib/connect_db.php');
@@ -13,7 +18,7 @@ $result = mysql_query($query, $mysql) or die("Errore, Impossibile recuperare le 
 while($row = mysql_fetch_array($result)){
 $i++;
  ?>
-
+<div id="response">
 <div class="device-c">
 <a href="index.php?s=show&id=<?=$row['id']?>" style="color:#000;   text-decoration: none;">
 <h2 style="margin-top:-10px; font-size:16px;"><i class="fa fa-tablet" aria-hidden="true"></i> <?=$row['nome']?></h2>
@@ -30,6 +35,7 @@ if($i%3 == 0){
 	}
 }
 ?>
+</div>
 <div style='clear:left; padding:3px;'></div>
 </div>
 <script type="text/javascript">
@@ -40,6 +46,28 @@ $( "#submain" ).css( "display", "block" );
 $( "#submenu" ).append("<li><a href='index.php?s=device&show=all'>All</a></li>");
 $( "#submenu" ).append('<li><a href="index.php?s=device&show=category">By Category</a></li>');
 $( "#submenu" ).append('<li><a href="index.php?s=device&show=promotion">PROMOTION</a></li>');
+
+  $("#price").change(function(){
+    var newval=$(this).val();
+    $("#slidernumber").text(newval);
+    $.ajax({
+                    type: 'GET',
+                    url: 'lib/request_device.php',
+                    data: 'max_price=' + newval,
+                    success: function(data) {
+                        $('#response').fadeOut(function() {
+                            $.get('lib/request_device.php?max_price=' + newval, function(data) {
+                                $('#response').html(data);
+                                $('#response').fadeIn();
+                            });
+                        });
+                    }
+                });
+
+
+  });
+
+
 });
 
 </script>
