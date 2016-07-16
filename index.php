@@ -36,11 +36,9 @@
         <div style="float:left;font-size:32px; margin-top:-5px;">
         <li> <a href="index.php?s=home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         </div>
-        <li><a href="index.php?s=home">  HOME   </a></li> 
         <li><a href="index.php?s=device">  DEVICE   </a></li>  
         <li><a href="index.php?s=sl">  SMARTLIFE   </a></li>  
         <li><a href="index.php?s=assistance">  ASSISTANCE   </a></li>  
-        <li><a href="index.php?s=altro">  XXXXXX   </a></li>
         <li><a href="index.php?s=admin">  Admin   </a></li>
         <div style="float:right; font-size:32px;margin-top:-10px;">
          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -55,48 +53,29 @@
       </ul>
     </nav>
 <div id="page">
+<?php
+// prendo il contenuto della variabile GET s
+$show = strip_tags(stripcslashes($_GET['s']));
+// Contiene in nomi dei file in /pages contenuti per l'inclusione
+$whitelist = ['home','device','sl','assistance', 'admin', 'show', 'device-cat', 'promo','promo-detail'];
+//rimuoviamo roba strana che possono inserire malintenzionati
+  if(in_array($show, $whitelist) or $_GET == null) {
+       if(!isset($_GET['s'])){
+             $show = "home";
+           } 
+    include("pages/".$show. ".php");
+  }else{
+  include("pages/404.php");
+  }
 
-</div>
+?>
 <footer>
  <?php include('footer.php'); ?>
    
  </footer>
+</div> 
+
   </div><!--// fine div#content -->
-  <script type="text/javascript">
-$( document ).ready(function() {
-  var getUrlParameter = function getUrlParameter(sParam) {
-  var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-      }
-  };
-var s = getUrlParameter('s');
-
-    $.ajax({
-                    type: 'GET',
-                    url: 'lib/request_page.php',
-                    data: 's='+ s,
-                    success: function(data) {
-                        $('#page').fadeOut(function() {
-                            $.get('lib/request_page.php?s=' + s, function(data) {
-                                $('#page').html(data);
-                                $('#page').fadeIn();
-                            });
-                        });
-                    }
-                });
-
-
-  });
-
-  </script>
 </body>
 </html>

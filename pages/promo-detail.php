@@ -9,7 +9,6 @@
   .bx-wrapper .bx-pager {
     bottom: -95px;
   }
-  
   .bx-wrapper .bx-pager a {
     border: solid #ccc 1px;
     display: block;
@@ -31,28 +30,32 @@
 require('lib/connect_db.php');
 $id = abs($_GET['id']);
 // Preparo la Query per mostrare tutti i device caricati nella tabella del database
-$query = "SELECT * FROM devices WHERE id = $id";
+$query = "SELECT * FROM devices d,promo p WHERE p.device_id = d.id AND p.id = ".$id;
 // Eseguo la query per recuperare le informazioni dal database
 $result = mysql_query($query, $mysql) or die("Errore, Impossibile recuperare le informazioni dal database");
 // Metto fuori i risultati dall'array
 while($row = mysql_fetch_array($result)){
  ?>
-<h1><?=$row['nome']?></h1>
-<div style="float:right; width:50%;">
-<span style=" font-size:20px; " ><b> Description </b> </span> <br />
-<p style="display:block;"><?=utf8_encode($row['features'])?></p>
-<br />
-<span  style=" font-size:20px;"" ><b> What's in the box: </b> </span> <br />
-<p><?=utf8_encode($row['box'])?></p>
- <p><h1>Trouble? Check out Help Desk:</h1> 
-<a href="#"><span id="help" class="button" style="cursor:pointer;">Assistance Device</span></a>
-<a href="#"><span id="help" class="button" style="cursor:pointer;">Chat with Operator</span></a>
+ <h2>Device » Promotion » <?=$row['nome']?></h2>
+
+<div style="text-align:center; padding:3px; width:50%; float:right;">
+
+<div style="font-size:20px; margin:auto;display:block; text-align:left; padding:10px;"><b> Promotion Details </b> <br /> 
+<p><?=utf8_encode($row['details'])?></p>
+<hr width="80%" />
+<center>
+<span style="font-size:40px;">Promotion Price: <b><br /><?=$row['new_price']?> €/month</b></span>
+<hr width="80%" />
+<a href="index.php?s=show&id=<?=$row['device_id']?>"><span id="showmore" class="button" style="cursor:pointer;">See Device Page</span></a>
+<a href="#" onclick="javascript:alert('Function Disabled');"><span id="showmore" class="button" style="cursor:pointer;">BUY NOW</span></a>
+</center>
+<h2> HelpDesk </h2>
+<p><a href="#"><span id="help" class="button" style="cursor:pointer;">Question & Answers</span></a>
+<a href="#" onclick="javascript:alert('Function Disabled');"><span id="help" class="button" style="cursor:pointer;">Chat with operator</span></a>
 <a href="#"><span id="help" class="button" style="cursor:pointer;">Contact us</span></a>
 </p>
-<p><h1>Payment</h1>
-<a href="#" onclick="javascript:alert('Function Disabled');"><span id="showmore" class="button" style="cursor:pointer;">BUY NOW</span></a>
-<img src="img/ebs-logos.png" />
-</p>
+</div>
+
 </div>
 
 <div class="device-show">
@@ -69,8 +72,8 @@ if($row['img_2'] != NULL){
 	
 ?>
 	</ul>
-	
-<div style="text-align:center; margin:3px; margin: auto;  float:left;">
+
+<div style="text-align:center; margin:3px; margin: auto;  float:right;">
 <?php
 $colori =  preg_split("/[\s,]+/", $row['colore']);
 for($i=0;$i<count($colori); $i++){
@@ -79,9 +82,12 @@ for($i=0;$i<count($colori); $i++){
 }
 ?>
 </div>
-<div style="text-align:center; padding:3px; font-size:40px; width:50%; float:left;"><b><?=$row['prezzo']?> €</b></div>
- 
+
 </div>
+
+
+
+
 <?php
 	}
 ?>
