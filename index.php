@@ -37,12 +37,12 @@
         <li> <a href="index.php?s=home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         </div>
         <li><a href="index.php?s=device">  DEVICE   </a></li>  
-        <li><a href="index.php?s=sl">  SMARTLIFE   </a></li>  
+        <li><a href="index.php?s=smartlife">  SMARTLIFE   </a></li>  
         <li><a href="index.php?s=assistance">  ASSISTANCE   </a></li>  
         <li><a href="index.php?s=admin">  Admin   </a></li>
         <div style="float:right; font-size:32px;margin-top:-10px;">
-         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-         <i class="fa fa-envelope" aria-hidden="true"></i>
+         <i class="fa fa-shopping-cart" aria-hidden="true" onclick="javascript:alert('Function Disabled');"></i>
+         <i class="fa fa-envelope" aria-hidden="true" onclick="javascript:alert('Function Disabled');"></i>
         </div>
       </ul>
 
@@ -57,7 +57,7 @@
 // prendo il contenuto della variabile GET s
 $show = strip_tags(stripcslashes($_GET['s']));
 // Contiene in nomi dei file in /pages contenuti per l'inclusione
-$whitelist = ['home','device','sl','assistance', 'admin', 'show', 'device-cat', 'promo','promo-detail'];
+$whitelist = ['home','device','smartlife','assistance', 'admin', 'show', 'device-cat', 'promo','promo-detail'];
 //rimuoviamo roba strana che possono inserire malintenzionati
   if(in_array($show, $whitelist) or $_GET == null) {
        if(!isset($_GET['s'])){
@@ -69,13 +69,13 @@ $whitelist = ['home','device','sl','assistance', 'admin', 'show', 'device-cat', 
   }
 
 ?>
+
+</div> 
+
+  </div><!--// fine div#content -->
 <footer>
  <?php include('footer.php'); ?>
    
  </footer>
-</div> 
-
-  </div><!--// fine div#content -->
-
 </body>
 </html>
