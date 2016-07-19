@@ -25,7 +25,7 @@
   <div id="content">
 
   <!--  //Heading e Logo -->
-    <div id="head"></div>
+    <a href="index.php?s=home"><div id="head"></div></a>
 
   <!--  // Barra di Navigazione -->
     <nav id="main">
@@ -39,10 +39,10 @@
         <li><a href="index.php?s=device">  DEVICE   </a></li>  
         <li><a href="index.php?s=smartlife">  SMARTLIFE   </a></li>  
         <li><a href="index.php?s=assistance">  ASSISTANCE   </a></li>  
-        <li><a href="index.php?s=admin">  Admin   </a></li>
+        <li><a href="index.php?s=admin">  <small>debug</small>   </a></li>  
         <div style="float:right; font-size:32px;margin-top:-10px;">
          <i class="fa fa-shopping-cart" aria-hidden="true" onclick="javascript:alert('Function Disabled');"></i>
-         <i class="fa fa-envelope" aria-hidden="true" onclick="javascript:alert('Function Disabled');"></i>
+         <a href="index.php?s=contactus"><i class="fa fa-envelope" aria-hidden="true" "></i></a>
         </div>
       </ul>
 
@@ -57,7 +57,7 @@
 // prendo il contenuto della variabile GET s
 $show = strip_tags(stripcslashes($_GET['s']));
 // Contiene in nomi dei file in /pages contenuti per l'inclusione
-$whitelist = ['home','device','smartlife','assistance', 'admin', 'show', 'device-cat', 'promo','promo-detail'];
+$whitelist = ['home','device','smartlife','assistance', 'admin', 'show', 'device-cat', 'promo','promo-detail','contactus','thegroup','whoweare'];
 //rimuoviamo roba strana che possono inserire malintenzionati
   if(in_array($show, $whitelist) or $_GET == null) {
        if(!isset($_GET['s'])){

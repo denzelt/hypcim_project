@@ -1,4 +1,5 @@
-<center style="top: 25%; left: 30%; width: 50%; height: auto; margin:auto; text-align:left; position:absolute;">
+<div style="margin:auto; text-aling:center; width:850px; height:100%;">
+<center style="width: 50%; height: auto; margin:auto; text-align:left; position:absolute;">
 <h1><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Errore 404</h1>
 <h3>Ops... si è verificato un errore</h3>
 <p>La pagina che stavi cercando non è al momento disponibile. <br />
@@ -7,3 +8,5 @@ Usa la barra di navigazione per tornare indietro oppure utilizza il menu in alto
 <img src="http://img2.turbomilk.com/blog/cookbook/iconfinder-404-page/404-iconfinder-3.gif" />
 </p>
 </center>
+<div style="clear:both;"></div>
+</div>

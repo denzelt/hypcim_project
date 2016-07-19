@@ -1,9 +1,14 @@
-<div style="margin:auto; text-aling:center; width:850px;">
+<div style="margin:auto; width:850px;">
 <h2>Device » Promotion by Category </h2>
 <p>In this page you can find all the promos relate to our device. Check out our Mobile and Home offers and don't miss our Entertainment offers!</p>
-
-
-
+       <center>
+        <a href="#" onclick="javascript:history.back();"><span id="showmore quickbutton" class="button">« Back</span></a>
+        <a href="index.php?s=device-cat&cat=Smartphone"><span id="showmore quickbutton" class="button">Go To Smartphone Device</span></a>
+        <a href="index.php?s=device-cat&cat=Tablet"><span id="showmore quickbutton" class="button">Go To Tablet Device</span></a>
+        <a href="index.php?s=device-cat&cat=Network"><span id="showmore quickbutton" class="button"> Go To Network Device</span></a>
+        <a href="index.php?s=device-cat&cat=Smart%20Living"><span id="showmore quickbutton" class="button">Go To Smart Living Device</span></a>
+        <a href="index.php?s=assistance"><span id="showmore quickbutton" class="button">Highlights</span></a>
+        </center>
 <?php
 // Default Page
 $cat = $_GET['cat'];
@@ -22,7 +27,7 @@ if (!isset($_GET['cat'])){
 require('lib/connect_db.php');
     for($c= 0; $c<4; $c++){
         //Costruisco dinamicamente le ctegorie
-        echo "<h2>".$category[$c]."</h2>";
+        echo "  <div id='response'><h2>".$category[$c]."</h2>";
         $query = "SELECT * FROM devices d,promo p WHERE p.device_id = d.id AND p.cat_promo ='".$category[$c]."' ORDER BY p.id DESC LIMIT 3";
         // Eseguo la query per recuperare le informazioni dal database
         $result = mysql_query($query, $mysql) or die("Errore, Impossibile recuperare le informazioni dal database");
@@ -30,7 +35,7 @@ require('lib/connect_db.php');
         while($row = mysql_fetch_array($result)){
         $i++;
         ?>
-        <div id="response">
+
         <div class="device-c">
        <a href="index.php?s=promo-detail&id=<?=$row['id']?>" style="color:#000;   text-decoration: none;">
        <h2 style="margin-top:-10px; font-size:16px;"><i class="fa fa-signal" aria-hidden="true"></i> <?=$row['nome']?></h2>
@@ -44,6 +49,7 @@ require('lib/connect_db.php');
        <?php
      } // end while
    ?>
+   </div>
    <div style='clear:left; padding:3px;'></div>
        <center><a href="index.php?s=promo&cat=<?=$category[$c]?>"><span id="showmore" class="button" style="cursor:pointer;">Show More</span></a></center>
        <div style='clear:left; padding:3px;'></div>
@@ -56,15 +62,15 @@ require('lib/connect_db.php');
     ?>
     <h2><?=$cat?> </h2>
 <?php
-// Connetto il DB
-require('lib/connect_db.php');
-$page = $_GET['page'];
+  // Connetto il DB
+  require('lib/connect_db.php');
+  $page = $_GET['page'];
 if ($page == 0 or $page == 1 ){
     $page = 1;
     $limit_r = 0;
-}else{
- $limit_r = 3 * ($page - 1);
-}
+    }else{
+    $limit_r = 3 * ($page - 1);
+  }
 
 // Controllo gli elementi della tabella di una categoria per le operazioni preliminari
 $query = "SELECT * FROM promo WHERE cat_promo ='".$cat."' ORDER BY id DESC ";
@@ -105,9 +111,9 @@ echo "<center>";
 //  numerazione delle pagine
 for($ip = 1; $ip <= $p; $ip++){
     if ($page == $ip)   {  
-    echo "<a href ='index.php?s=promo&cat=$cat&page=$ip' class='pagenumb-c'>$ip</a>";
+    echo "<a href ='index.php?s=promo&cat=".urlencode($cat)."&page=$ip' class='pagenumb-c'>$ip</a>";
     }else{
-    echo "<a href ='index.php?s=promo&cat=$cat&page=$ip' class='pagenumb'>$ip</a>";
+    echo "<a href ='index.php?s=promo&cat=".urlencode($cat)."&page=$ip' class='pagenumb'>$ip</a>";
     }
 
         }
@@ -115,7 +121,7 @@ echo "</center>";
 }
 ?>
 <div style='clear:both; padding:3px;'></div>
-
+</div>
 <script type="text/javascript">
 $( document ).ready(function() {
 // Abilito il Sottomenu rendendolo visibile

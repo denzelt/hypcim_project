@@ -1,13 +1,20 @@
 ﻿<div style="margin:auto; text-aling:center; width:850px;">
 <h2>Device » All Device</h2>
 <p>Welcome in the Device page, here you can navigate throught our catalog. You can view all devices or you can choose a category. You can also check the Promotion page where there are always good deals!</p>
+<hr width="80%">
 <form name="filters" method="get" action="index.php?s=device">
+<br />
 <h3>Quick Filters</h3> 
 <p>Filters allow you to quickly view all device in one page defined by your search criteria.</p>
- <label><b>Max Price:</b> <span id="slidernumber">(0 - 1500)</span>€
+ <label style="float:left; margin: 5px;"><b>Max Price:</b> <span id="slidernumber">(0 - 1500)</span>€
     <input type="range" name="price" min="50" max="1500" step="10" id="price" style="display:block;">
   </label>
+  <a href="index.php?s=device-cat&cat=Smartphone"><span id="showmore" class="button" style="cursor:pointer;display:block;float:right; margin-left:10px;">Show Smartphone</span></a>
+    <a href="index.php?s=device-cat&cat=Tablet"><span id="showmore" class="button" style="cursor:pointer;display:block;float:right;margin-left:10px;">Show Tablet</span></a>
+      <a href="index.php?s=device-cat&cat=Network"><span id="showmore" class="button" style="cursor:pointer;display:block;float:right;margin-left:10px;">Show Network</span></a>
+        <a href="index.php?s=device-cat&cat=Smart%20Living"><span id="showmore" class="button" style="cursor:pointer;display:block;float:right;margin-left:10px;">Show Smart Living</span></a>
 </form>
+<div style="clear:both; padding:5px;"></div>
 <?php
 // Connetto il DB
 require('lib/connect_db.php');
@@ -69,7 +76,7 @@ for($ip = 1; $ip <= $p; $ip++){
 </center>
 </div>
 </div>
-<div style='clear:left; padding:3px;'></div>
+<div style='clear:left; padding:10px;'></div>
 
 <script type="text/javascript">
 $( document ).ready(function() {

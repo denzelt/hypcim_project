@@ -145,10 +145,34 @@ hr{
    position:relative; 
 }
 #content{
-     position:realtive;
+     position:relative;
     height: auto !important;
     height:100%;
 
+}
+.bx-wrapper .bx-pager {
+    bottom: -95px;
+  }
+  .bx-wrapper .bx-pager a {
+    border: solid #ccc 1px;
+    display: block;
+    margin: 0 5px;
+    padding: 3px;
+  }
+  
+  .bx-wrapper .bx-pager a:hover,
+  .bx-wrapper .bx-pager a.active {
+    border: solid #5280DD 1px;
+  }
+  
+  .bx-wrapper {
+    margin-bottom: 1;
+}
+.smartcat{
+	padding:5px; 
+	border: 1px solid #acacac; 
+	margin-top:3px; 
+	border-radius:4px;
 }
 .boxed-content{
     float:left; 

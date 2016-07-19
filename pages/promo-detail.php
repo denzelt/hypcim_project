@@ -1,30 +1,10 @@
-<div style="margin:auto; text-aling:center; width:850px;">
+<div style="margin:auto; width:850px;">
 <!-- jQuery library (served from Google) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- bxSlider Javascript file -->
 <script src="/js/jquery.bxslider.min.js"></script>
 <!-- bxSlider CSS file -->
 <link href="/css/jquery.bxslider.css" rel="stylesheet" />
-<style type="text/css">
-  .bx-wrapper .bx-pager {
-    bottom: -95px;
-  }
-  .bx-wrapper .bx-pager a {
-    border: solid #ccc 1px;
-    display: block;
-    margin: 0 5px;
-    padding: 3px;
-  }
-  
-  .bx-wrapper .bx-pager a:hover,
-  .bx-wrapper .bx-pager a.active {
-    border: solid #5280DD 1px;
-  }
-  
-  .bx-wrapper {
-    margin-bottom: 120px;
-  }
-</style>
 <?php
 // Connetto il DB
 require('lib/connect_db.php');
@@ -33,28 +13,35 @@ $id = abs($_GET['id']);
 $query = "SELECT * FROM devices d,promo p WHERE p.device_id = d.id AND p.id = ".$id;
 // Eseguo la query per recuperare le informazioni dal database
 $result = mysql_query($query, $mysql) or die("Errore, Impossibile recuperare le informazioni dal database");
+// Se non esiste
+  if( mysql_num_rows($result) == 0) { include('pages/404.php'); exit();}
 // Metto fuori i risultati dall'array
 while($row = mysql_fetch_array($result)){
  ?>
+ <div style="padding:5px;">
+        <a href="#" onclick="javascript:history.back();"><span id="showmore quickbutton" class="button">« Back</span></a>
+        
+        <a href="index.php?s=assistance"><span id="showmore quickbutton" class="button" style="float:right;">Highlights</span></a>
+        </div>
  <h2>Device » Promotion » <?=$row['nome']?></h2>
 
 <div style="text-align:center; padding:3px; width:50%; float:right;">
 
 <div style="font-size:20px; margin:auto;display:block; text-align:left; padding:10px;"><b> Promotion Details </b> <br /> 
-<p><?=utf8_encode($row['details'])?></p>
-<hr width="80%" />
+    <p><?=utf8_encode($row['details'])?></p>
+    <hr width="80%" />
 <center>
-<span style="font-size:40px;">Promotion Price: <b><br /><?=$row['new_price']?> €/month</b></span>
-<hr width="80%" />
-<a href="index.php?s=show&id=<?=$row['device_id']?>"><span id="showmore" class="button" style="cursor:pointer;">See Device Page</span></a>
-<a href="#" onclick="javascript:alert('Function Disabled');"><span id="showmore" class="button" style="cursor:pointer;">BUY NOW</span></a>
+    <span style="font-size:40px;">Promotion Price: <b><br /><?=$row['new_price']?> €/month</b></span>
+    <hr width="80%" />
+    <a href="index.php?s=show&id=<?=$row['device_id']?>"><span id="showmore" class="button" style="cursor:pointer;">See Device Page</span></a>
+    <a href="#" onclick="javascript:alert('Function Disabled');"><span id="showmore" class="button" style="cursor:pointer;">BUY NOW</span></a>
 </center>
 <h2> HelpDesk </h2>
-<p><a href="#"><span id="help" class="button" style="cursor:pointer;">Question & Answers</span></a>
-<a href="#" onclick="javascript:alert('Function Disabled');"><span id="help" class="button" style="cursor:pointer;">Chat with operator</span></a>
-<a href="#"><span id="help" class="button" style="cursor:pointer;">Contact us</span></a>
-</p>
-</div>
+    <p> <a href="index.php?s=assistance"><span id="help" class="button" style="cursor:pointer;">Question & Answers</span></a>
+        <a href="#" onclick="javascript:alert('Function Disabled');"><span id="help" class="button" style="cursor:pointer;">Chat with operator</span></a>
+        <a href="#"><span id="help" class="button" style="cursor:pointer;">Contact us</span></a>
+    </p>
+  </div>
 
 </div>
 
@@ -73,20 +60,8 @@ if($row['img_2'] != NULL){
 ?>
 	</ul>
 
-<div style="text-align:center; margin:3px; margin: auto;  float:right;">
-<?php
-$colori =  preg_split("/[\s,]+/", $row['colore']);
-for($i=0;$i<count($colori); $i++){
-	echo '<div style=" width:40px; height:40px; border-radius:40px;margin: 3px; float:left; background-color:'.$colori[$i].'"></div>';
-
-}
-?>
-</div>
 
 </div>
-
-
-
 
 <?php
 	}
@@ -96,7 +71,7 @@ for($i=0;$i<count($colori); $i++){
 <script type="text/javascript">
 $( document ).ready(function() {
 // Attiva lo slider
-$('.bxslider').bxSlider( {mode: 'horizontal'});
+$('.bxslider').bxSlider( {mode: 'horizontal',  auto: true});
 // Abilito il Sottomenu rendendolo visibile
 $( "#submain" ).css( "display", "block" );
 // Aggiungo i link dinamicamente
