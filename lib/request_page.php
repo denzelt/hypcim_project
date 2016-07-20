@@ -1,4 +1,8 @@
 <?php
+// ELIMINARE
+
+
+
 // prendo il contenuto della variabile GET s
 $show = strip_tags(stripcslashes($_GET['s']));
 // Contiene in nomi dei file in /pages contenuti per l'inclusione
